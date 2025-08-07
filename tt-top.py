@@ -161,7 +161,7 @@ Examples:
   %(prog)s                    # Run with default 3-second interval
   %(prog)s -i 5               # Run with 5-second interval
   %(prog)s -d 30              # Run for 30 minutes
-  %(prog)s --no-save          # Don't save history on exit
+  %(prog)s --save             # Save history on exit
         """
     )
     
@@ -169,8 +169,8 @@ Examples:
                        help='Monitoring interval in seconds (default: 3)')
     parser.add_argument('-d', '--duration', type=int,
                        help='Duration in minutes (default: unlimited)')
-    parser.add_argument('--no-save', action='store_true',
-                       help='Don\'t save history on exit')
+    parser.add_argument('--save', action='store_true',
+                       help='Save history on exit (default: no save)')
     parser.add_argument('--version', action='version', version='tt-top 2.0.0')
     
     args = parser.parse_args()
@@ -183,7 +183,7 @@ Examples:
     
     # Create and run application
     app = TenstorrentTopApp(interval=args.interval)
-    app.run(duration_minutes=args.duration, save_on_exit=not args.no_save)
+    app.run(duration_minutes=args.duration, save_on_exit=args.save)
 
 
 if __name__ == "__main__":

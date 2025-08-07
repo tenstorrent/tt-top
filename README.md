@@ -39,8 +39,8 @@ python tt-top.py -i 5
 # Run for specific duration
 python tt-top.py -d 30
 
-# Don't save history on exit
-python tt-top.py --no-save
+# Save history on exit (not saved by default)
+python tt-top.py --save
 ```
 
 ### Library Usage Examples: `library_usage_examples.py`
